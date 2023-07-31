@@ -1,0 +1,7 @@
+version "1.0"
+package "vfsindex"
+purpose "VFS Indexer"
+
+option "input" i "Input path" required string
+option "output" o "Output path" optional string
+option "override" y "Override output" optional
