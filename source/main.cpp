@@ -80,8 +80,7 @@ static bool readBool() {
 			value = true;
 		} else if (svalue == "n") {
 			value = false;
-		}
-		else {
+		} else {
 			std::cout << "Invalid option.\n";
 			std::cout << "Try again: " << std::flush;
 			fail = true;
