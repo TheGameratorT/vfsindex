@@ -1,6 +1,3 @@
-#define STB_IMAGE_IMPLEMENTATION
-#define STB_IMAGE_WRITE_IMPLEMENTATION
-
 #include <iostream>
 #include <fstream>
 #include <filesystem>
@@ -146,9 +143,9 @@ static int buildIndex(gengetopt_args_info& args_info) {
 	std::filesystem::path outputPath = args_info.output_given ? args_info.output_arg : "~INDEX";
 
 	if (!args_info.override_given && std::filesystem::exists(outputPath)) {
-		std::cout << "Output file already exists, overwrite? (Y/n): ";
+		std::cout << "Output file already exists, overwrite? (Y/n): " << std::flush;
 		if (!readBool()) {
-			std::cout << "File creation cancelled by user.";
+			std::cout << "Index file creation cancelled by user." << std::endl;
 			return 0;
 		}
 	}
@@ -188,9 +185,16 @@ static int buildIndex(gengetopt_args_info& args_info) {
 	std::vector<char> data;
 	data.resize(header.size() + filenames.size());
 	std::memcpy(&data[0], &header[0], header.size());
-	std::memcpy(&data[header.size()], &filenames[0], filenames.size());
+	if (filenames.size() > 0) {
+		std::memcpy(&data[header.size()], &filenames[0], filenames.size());
+	}
 
-	return saveOutputFile(outputPath, &data[0], data.size()) ? 0 : -1;
+	if (!saveOutputFile(outputPath, &data[0], data.size())) {
+		return -1;
+	}
+
+	std::cout << "Index file created successfully with " << fileCount << " file entr" << (fileCount == 1 ? "y" : "ies") << "." << std::endl;
+	return 0;
 }
 
 int main(int argc, char* argv[]) {
