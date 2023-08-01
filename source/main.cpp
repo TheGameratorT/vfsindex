@@ -105,7 +105,7 @@ static int printData(gengetopt_args_info& args_info) {
 	std::ifstream inputFile(inputFilePath, std::ios::binary);
 	if (!inputFile.is_open()) {
 		std::cerr << "Failed to open input file: " << inputFilePath.string() << std::endl;
-		return -1;
+		return 1;
 	}
 
 	std::size_t inputFileSize = std::filesystem::file_size(inputFilePath);
@@ -190,7 +190,7 @@ static int buildIndex(gengetopt_args_info& args_info) {
 	}
 
 	if (!saveOutputFile(outputPath, &data[0], data.size())) {
-		return -1;
+		return 1;
 	}
 
 	std::cout << "Index file created successfully with " << fileCount << " file entr" << (fileCount == 1 ? "y" : "ies") << "." << std::endl;
