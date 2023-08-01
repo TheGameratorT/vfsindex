@@ -9,7 +9,7 @@ add_compile_definitions(_CRT_SECURE_NO_DEPRECATE)
 endif()
 
 # Select all of the source files recursively
-file(GLOB_RECURSE SOURCES "source/*.cpp" "source/args.c")
+file(GLOB_RECURSE SOURCES "source/*.cpp")
 
 # Add the executable
 add_executable(${PROJECT_NAME} ${SOURCES} $<IF:$<BOOL:${WIN32}>,win_resources.rc,>)
@@ -18,3 +18,5 @@ add_executable(${PROJECT_NAME} ${SOURCES} $<IF:$<BOOL:${WIN32}>,win_resources.rc
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 20)
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_EXTENSIONS OFF)
+
+include(args.cmake)

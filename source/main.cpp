@@ -3,6 +3,7 @@
 #include <filesystem>
 #include <functional>
 #include <vector>
+#include <cstring>
 #include <stdint.h>
 
 #include "args.h"
