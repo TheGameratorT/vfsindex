@@ -4,7 +4,7 @@ A tool to generate a VFS (Virtual FileSystem) "~INDEX" file for the game Sakura 
 ## Building
 
 ### Windows
-Make sure that CMake and a compatible compiler (MSVC, GCC or Clang) is installed. MSVC is recommended. \
+Make sure that CMake, gengetopt and a compatible compiler (MSVC, GCC or Clang) is installed. MSVC is recommended. \
 Then run the following commands:
 
 Example for MSVC (2022):
@@ -18,7 +18,7 @@ Note: You might need to change the version or the architecture used in the examp
 The output files can be found in the `build` directory.
 
 ### Linux and MacOS
-Make sure that the following packages `cmake` and `build-essential` are installed on the system and run these commands:
+Make sure that the following packages `cmake`, `gengetopt` and `build-essential` are installed on the system and run these commands:
 ```sh
 git clone https://github.com/TheGameratorT/vfsindex.git
 mkdir build && cd build
