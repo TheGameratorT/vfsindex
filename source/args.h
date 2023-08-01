@@ -45,13 +45,13 @@ struct gengetopt_args_info
   char * output_arg;	/**< @brief Output path.  */
   char * output_orig;	/**< @brief Output path original value given at command line.  */
   const char *output_help; /**< @brief Output path help description.  */
-  const char *override_help; /**< @brief Override output help description.  */
+  const char *overwrite_help; /**< @brief Overwrite output help description.  */
   
   unsigned int help_given ;	/**< @brief Whether help was given.  */
   unsigned int version_given ;	/**< @brief Whether version was given.  */
   unsigned int input_given ;	/**< @brief Whether input was given.  */
   unsigned int output_given ;	/**< @brief Whether output was given.  */
-  unsigned int override_given ;	/**< @brief Whether override was given.  */
+  unsigned int overwrite_given ;	/**< @brief Whether overwrite was given.  */
 
 } ;
 

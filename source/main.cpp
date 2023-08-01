@@ -142,7 +142,7 @@ static int printData(gengetopt_args_info& args_info) {
 static int buildIndex(gengetopt_args_info& args_info) {
 	std::filesystem::path outputPath = args_info.output_given ? args_info.output_arg : "~INDEX";
 
-	if (!args_info.override_given && std::filesystem::exists(outputPath)) {
+	if (!args_info.overwrite_given && std::filesystem::exists(outputPath)) {
 		std::cout << "Output file already exists, overwrite? (Y/n): " << std::flush;
 		if (!readBool()) {
 			std::cout << "Index file creation cancelled by user." << std::endl;

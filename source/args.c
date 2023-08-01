@@ -37,7 +37,7 @@ const char *gengetopt_args_info_help[] = {
   "  -V, --version        Print version and exit",
   "  -i, --input=STRING   Input path",
   "  -o, --output=STRING  Output path",
-  "  -y, --override       Override output",
+  "  -y, --overwrite      Overwrite output",
     0
 };
 
@@ -67,7 +67,7 @@ void clear_given (struct gengetopt_args_info *args_info)
   args_info->version_given = 0 ;
   args_info->input_given = 0 ;
   args_info->output_given = 0 ;
-  args_info->override_given = 0 ;
+  args_info->overwrite_given = 0 ;
 }
 
 static
@@ -90,7 +90,7 @@ void init_args_info(struct gengetopt_args_info *args_info)
   args_info->version_help = gengetopt_args_info_help[1] ;
   args_info->input_help = gengetopt_args_info_help[2] ;
   args_info->output_help = gengetopt_args_info_help[3] ;
-  args_info->override_help = gengetopt_args_info_help[4] ;
+  args_info->overwrite_help = gengetopt_args_info_help[4] ;
   
 }
 
@@ -222,8 +222,8 @@ cmdline_parser_dump(FILE *outfile, struct gengetopt_args_info *args_info)
     write_into_file(outfile, "input", args_info->input_orig, 0);
   if (args_info->output_given)
     write_into_file(outfile, "output", args_info->output_orig, 0);
-  if (args_info->override_given)
-    write_into_file(outfile, "override", 0, 0 );
+  if (args_info->overwrite_given)
+    write_into_file(outfile, "overwrite", 0, 0 );
   
 
   i = EXIT_SUCCESS;
@@ -1096,7 +1096,7 @@ cmdline_parser_internal (
         { "version",	0, NULL, 'V' },
         { "input",	1, NULL, 'i' },
         { "output",	1, NULL, 'o' },
-        { "override",	0, NULL, 'y' },
+        { "overwrite",	0, NULL, 'y' },
         { 0,  0, 0, 0 }
       };
 
@@ -1150,14 +1150,14 @@ cmdline_parser_internal (
             goto failure;
         
           break;
-        case 'y':	/* Override output.  */
+        case 'y':	/* Overwrite output.  */
         
         
           if (update_arg( 0 , 
-               0 , &(args_info->override_given),
-              &(local_args_info.override_given), optarg, 0, 0, ARG_NO,
+               0 , &(args_info->overwrite_given),
+              &(local_args_info.overwrite_given), optarg, 0, 0, ARG_NO,
               check_ambiguity, override, 0, 0,
-              "override", 'y',
+              "overwrite", 'y',
               additional_error))
             goto failure;
         
