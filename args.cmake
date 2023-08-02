@@ -7,11 +7,13 @@ function(GenerateArgs SOURCE_DIR BUILD_DIR)
     set(ARGS_OUTPUT_C "${ARGS_OUTPUT_DIR}/args.c")
     set(ARGS_OUTPUT_H "${ARGS_OUTPUT_DIR}/args.h")
 
-    # Copy to parent scope
-    set(ARGS_OUTPUT_DIR ${ARGS_OUTPUT_DIR} PARENT_SCOPE)
-    set(ARGS_INPUT_FILE ${ARGS_INPUT_FILE} PARENT_SCOPE)
-    set(ARGS_OUTPUT_C ${ARGS_OUTPUT_C} PARENT_SCOPE)
-    set(ARGS_OUTPUT_H ${ARGS_OUTPUT_H} PARENT_SCOPE)
+    if(NOT DEFINED PRE_BUILD_STEP)
+        # Copy to parent scope
+        set(ARGS_OUTPUT_DIR ${ARGS_OUTPUT_DIR} PARENT_SCOPE)
+        set(ARGS_INPUT_FILE ${ARGS_INPUT_FILE} PARENT_SCOPE)
+        set(ARGS_OUTPUT_C ${ARGS_OUTPUT_C} PARENT_SCOPE)
+        set(ARGS_OUTPUT_H ${ARGS_OUTPUT_H} PARENT_SCOPE)
+    endif()
 
     # Check if output files are older than the input file
     set(OUTPUT_FILES "${ARGS_OUTPUT_C}" "${ARGS_OUTPUT_H}")
