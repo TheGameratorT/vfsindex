@@ -42,8 +42,6 @@ if(DEFINED PRE_BUILD_STEP)
 endif()
 
 # Run the code on pre-build as well
-include(ExternalProject)
-
 GenerateArgs(${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR})
 
 add_custom_target(args_depends)
